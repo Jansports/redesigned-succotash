@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 适配手机屏幕 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 这里改成你的网站标题，比如“XX的绘画作品集” -->
+    <title>简书</title>
+    <style>
+        /* 全局样式，简约高级，突出画作 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #222;
+            font-family: "Microsoft Yahei", sans-serif;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        /* 头部标题区域 */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 图片网格布局，电脑手机都适配 */
+        .paint-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            /* 电脑一行3张，平板一行2张，手机一行1张 */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        /* 单张画作卡片 */
+        .paint-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .paint-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .paint-card img {
+            width: 100%;
+            height: 300px;
+            /* 保持图片比例，不变形 */
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .paint-card p {
+            padding: 15px;
+            color: #333;
+            text-align: center;
+        }
+
+        /* 点击图片放大查看的样式，不用JS也能实现 */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 999;
+            padding: 50px 20px;
+        }
+
+        .lightbox:target {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 4px;
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网站头部，改成你自己的信息 -->
+    <header>
+        <h1>简书</h1>
+        <p>这里是我的涩涩合集，记录每一笔的热爱与成长</p>
+    </header>
+
+    <!-- 画作展示网格，这里添加你的作品 -->
+    <div class="paint-grid">
+        <!-- 一张画作的模板，复制这一段，就能添加新的画作 -->
+        <div class="paint-card">
+            <!-- href里的#img1 和下面的id对应，images/paint-1.jpg 改成你的图片路径 -->
+            <a href="#img1">
+                <img src="images/paint-1.jpg" alt="画作1名称">
+            </a>
+            <p>画作1名称 | 创作时间</p>
+        </div>
+
+        <div class="paint-card">
+            <a href="#img2">
+                <img src="images/paint-2.jpg" alt="画作2名称">
+            </a>
+            <p>画作2名称 | 创作时间</p>
+        </div>
+
+        <div class="paint-card">
+            <a href="#img3">
+                <img src="images/paint-3.jpg" alt="画作3名称">
+            </a>
+            <p>画作3名称 | 创作时间</p>
+        </div>
+        <!-- 复制上面的模板，添加更多画作 -->
+    </div>
+
+    <!-- 图片放大查看的对应内容，和上面的href一一对应 -->
+    <div id="img1" class="lightbox">
+        <a href="#" class="close">×</a>
+        <img src="images/paint-1.jpg" alt="画作1名称">
+    </div>
+
+    <div id="img2" class="lightbox">
+        <a href="#" class="close">×</a>
+        <img src="images/paint-2.jpg" alt="画作2名称">
+    </div>
+
+    <div id="img3" class="lightbox">
+        <a href="#" class="close">×</a>
+        <img src="images/paint-3.jpg" alt="画作3名称">
+    </div>
+    <!-- 对应上面的画作，复制添加对应的放大内容 -->
+</body>
+
+</html>
